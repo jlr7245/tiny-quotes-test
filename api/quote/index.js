@@ -1,6 +1,6 @@
 const {
   GraphQLList,
-  GraphQLNumber,
+  GraphQLInt,
   GraphQLNonNull,
   GraphQLString
 } = require('graphql')
@@ -22,7 +22,7 @@ const query = {
   singleQuote: {
     type: QuoteType,
     args: {
-      id: { type: GraphQLNumber },
+      id: { type: GraphQLInt },
     },
     resolve: (root, { id }, ctx) => {
       return Quote.findOne(id)

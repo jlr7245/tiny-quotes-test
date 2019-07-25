@@ -1,13 +1,14 @@
 const {
   GraphQLString,
   GraphQLObjectType,
-  GraphQLNumber
+  GraphQLInt,
+  GraphQLBoolean
 } = require('graphql')
 
 const QuoteType = new GraphQLObjectType({
   name: 'Quote',
   fields: () => ({
-    id: { type: GraphQLNumber },
+    id: { type: GraphQLInt },
     quote: { type: GraphQLString },
     author: { type: GraphQLString }
   })
@@ -18,10 +19,11 @@ const QuoteMutation = new GraphQLObjectType({
   description: 'The outcome of a mutation request',
   fields: () => ({
     success: { type: GraphQLBoolean },
-    quote: { type: Quote }
+    quote: { type: QuoteType }
   })
 })
 
 module.exports = {
-  QuoteType
+  QuoteType,
+  QuoteMutation
 }

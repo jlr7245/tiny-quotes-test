@@ -2,8 +2,8 @@ const { GraphQLObjectType, GraphQLSchema } = require('graphql')
 const {
   query: quotequery,
   mutation: quotemutation
-} = require('./quote')
-const { QuoteType: Quote } = require('./quote/QuoteTypes')
+} = require('../api/quote')
+const { QuoteType: Quote } = require('../api/quote/QuoteTypes')
 
 const query = new GraphQLObjectType({
   name: 'Query',

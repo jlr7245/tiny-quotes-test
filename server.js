@@ -3,9 +3,9 @@ require('dotenv').config()
 const express = require('express')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const session = require('express-session')
-const passport = require('passport')
+const graphqlHTTP = require('express-graphql')
+
+const { QuerySchema } = require('./schema')
 
 const app = express()
 
@@ -25,7 +25,10 @@ app.use((req, res, next) => {
 
 app.use(express.static('public'))
 
-app.use('/api', require('./api'))
+app.use('/graphql', graphqlHTTP({
+  schema: QuerySchema,
+  graphiql: true
+}))
 
 app.use('*', (req, res) => {
   res.status(404).send('Not Found')
