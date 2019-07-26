@@ -1,0 +1,21 @@
+type Mutation {
+  createQuote(quote: String!, author: String!): QuoteMutation
+}
+
+type Query {
+  quoteList: [Quote]
+  singleQuote(id: Int): Quote
+}
+
+type Quote {
+  id: Int
+  quote: String
+  author: String
+}
+
+"""The outcome of a mutation request"""
+type QuoteMutation {
+  success: Boolean
+  quote: Quote
+}
+
